@@ -9,6 +9,7 @@
 	<div class="wrap">
 		<div class="task-list">
 			<ul>
+			<!--requires connect.php in includes folder-->
 				<?php require("includes/connect.php");
 				//creates new mysqli connection server, username, password, table
 				$mysqli = new mysqli("localhost", "root", "root", "tasks")
@@ -24,9 +25,11 @@
 							$task_id = $row["id"];
 							//creates new variable called task_name and equals it to row 'name'
 							$task_name = $row["name"];
-							echo "<li>
-`							<span>'.$task_name'
-							";	
+							//calls delete-button class
+							echo '<li>
+							<span>' .$task_name. '</span>
+							<img id="'.$task_id.'""class= "delete-button" width="10px" src="images/close.svg"/>
+							</li>';	
 						}
 					}
 				}
