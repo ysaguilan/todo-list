@@ -9,7 +9,28 @@
 	<div class="wrap">
 		<div class="task-list">
 			<ul>
-				<?php require("includes/connect.php"); ?>
+				<?php require("includes/connect.php");
+				//creates new mysqli connection server, username, password, table
+				$mysqli = new mysqli("localhost", "root", "root", "tasks")
+				//selects all information from the table called tasks orders it by date and acending time(ASC= acension)
+				$query = "SELECT * FROM tasks ORDER BY date ASC, time ASC";
+				//goes through query and connection
+				if($result = $mysqli->query($query))) {
+				//creates new variable called num_rows all information will be placed here
+					$numrows = $result->num_rows;
+					if ($numrows>0) {
+						while ($row=$result->fetch_assoc()) {
+							//creates new variable called task_id and equals it to row 'id'
+							$task_id = $row["id"];
+							//creates new variable called task_name and equals it to row 'name'
+							$task_name = $row["name"];
+							echo "<li>
+`							<span>'.$task_name'
+							";	
+						}
+					}
+				}
+				?>
 			</ul>
 		</div>
 		<form class="add-new-task" autocomplete="off">
