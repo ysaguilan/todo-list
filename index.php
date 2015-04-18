@@ -14,7 +14,7 @@
 				//creates new mysqli connection server, username, password, table
 				$mysqli = new mysqli("localhost", "root", "root", "todo");
 				//selects all information from the table called tasks orders it by date and acending time(ASC= acension)
-				$query = "SELECT * FROM tasks ORDER BY date ASC, time ASC";
+				$query = "SELECT * FROM todo ORDER BY date ASC, time ASC";
 				//goes through query and connection
 				if($result = $mysqli->query($query)) {
 				//creates new variable called num_rows all information will be placed here
@@ -48,12 +48,12 @@
 
 	function add_task() {
 		$('add-new-task').submit(function() {
-			var new_task = $('.add-new-task input[name=new-task').val();
+			var new_task = $('.add-new-task input[name=new-task]').val();
 
 			if (new_task != '') {
 				$.post('includes/add-task.php', {task: new_task}, function(data) {
-					$('add-new-task input[name=new-task']).val();
-						$(data).appendTo('task-list ul').hide().fadeIn();)
+					$('add-new-task input[name=new-task]').val();
+						$(data).appendTo('.task-list ul').hide().fadeIn();
 				});
 			}
 			return false;
