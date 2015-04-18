@@ -12,11 +12,11 @@
 			<!--requires connect.php in includes folder-->
 				<?php require("includes/connect.php");
 				//creates new mysqli connection server, username, password, table
-				$mysqli = new mysqli("localhost", "root", "root", "tasks")
+				$mysqli = new mysqli("localhost", "root", "root", "todo");
 				//selects all information from the table called tasks orders it by date and acending time(ASC= acension)
 				$query = "SELECT * FROM tasks ORDER BY date ASC, time ASC";
 				//goes through query and connection
-				if($result = $mysqli->query($query))) {
+				if($result = $mysqli->query($query)) {
 				//creates new variable called num_rows all information will be placed here
 					$numrows = $result->num_rows;
 					if ($numrows>0) {
